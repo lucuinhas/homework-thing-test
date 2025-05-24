@@ -29,8 +29,41 @@ function homeworkTypeColor(homeworkType) {
 function loadHomework(homeworkData) {
     const template = document.getElementById("homework-template")
 
+    homeworkData.sort((a, b) => {
+        let [aDay, aMonth, aYear] = a.date.split('/').map(Number)
+        aYear += 2000
+
+        let aDate = new Date(aYear, aMonth - 1, aDay)
+        aDate.setHours(7, 0, 0, 0)
+
+        let [bDay, bMonth, bYear] = b.date.split('/').map(Number)
+        bYear += 2000
+
+        let bDate = new Date(bYear, bMonth - 1, bDay)
+        bDate.setHours(7, 0, 0, 0)
+
+        return aDate - bDate
+    })
+
     for(const homeworkUnit of homeworkData) {
         let homeworkListItem = template.content.cloneNode(true)
+
+        let homeworkDate = homeworkListItem.querySelector(".homework-date")
+        homeworkDate.textContent = homeworkUnit.date
+
+        let [day, month, year] = homeworkUnit.date.split('/').map(Number)
+        year += 2000
+
+        let date = new Date(year, month - 1, day)
+        date.setHours(7, 0, 0, 0)
+
+        if(date - Date.now() < 0) {
+            continue
+        } else if (date - Date.now() < 86400000) {
+            homeworkDate.style.color = "#FA3B30"
+        } else if (date - Date.now() > 604800000) {
+            homeworkDate.style.color = "#35C759"
+        }
 
         homeworkListItem.querySelector(".homework-subject-icon").src = "./images/subjects/" + homeworkUnit.subject + ".svg"
 
@@ -45,23 +78,6 @@ function loadHomework(homeworkData) {
         let homeworkType = homeworkListItem.querySelector(".homework-type")
         homeworkType.lastChild.textContent = homeworkTypeDisplayName(homeworkUnit.type)
         homeworkType.style.color = homeworkTypeColor(homeworkUnit.type)
-
-        let homeworkDate = homeworkListItem.querySelector(".homework-date")
-        homeworkDate.textContent = homeworkUnit.date
-
-        let [day, month, year] = homeworkUnit.date.split('/').map(Number)
-        year += 2000
-
-        let date = new Date(year, month - 1, day)
-        date.setHours(7, 0, 0, 0)
-
-        console.log(date - Date.now())
-        if (date - Date.now() < 86400000) {
-            homeworkDate.style.color = "#FA3B30"
-        } else if (date - Date.now() > 604800000) {
-            homeworkDate.style.color = "#35C759"
-        }
-
 
         document.body.appendChild(homeworkListItem)
     }

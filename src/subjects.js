@@ -64,9 +64,9 @@ function subjectColor(subject) {
         case Subjects.arts:
             return "#5856D7"
         case Subjects.english:
-            return "#FA3B30"
+            return "#2FC7BE"
         case Subjects.essay:
-            return "#FA3B30"
+            return "#2FC7BE"
         case Subjects.philosophy:
             return "#5856D7"
         case Subjects.maths:
