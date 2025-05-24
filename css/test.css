@@ -1,0 +1,14 @@
+p, h2, span {
+    font-family: Futura, sans-serif;
+    color: white;
+
+    align-items: center;
+
+    margin: 0;
+    padding: 8px;
+}
+
+.homework-box {
+    background-color: #2f3137;
+    border-radius: 8px;
+}
