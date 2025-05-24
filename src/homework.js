@@ -32,7 +32,7 @@ function loadHomework(homeworkData) {
     for(const homeworkUnit of homeworkData) {
         let homeworkListItem = template.content.cloneNode(true)
 
-        homeworkListItem.querySelector(".homework-subject-icon").src = "images/subjects/" + homeworkUnit.subject + ".svg"
+        homeworkListItem.querySelector(".homework-subject-icon").src = "./images/subjects/" + homeworkUnit.subject + ".svg"
 
         let homeworkTitle = homeworkListItem.querySelector(".homework-title")
         homeworkTitle.lastChild.textContent = "Tarefa de " + subjectDisplayName(homeworkUnit.subject)
@@ -40,7 +40,7 @@ function loadHomework(homeworkData) {
 
         homeworkListItem.querySelector(".homework-description").textContent = homeworkUnit.simpleDescription
 
-        homeworkListItem.querySelector(".homework-type-icon").src = "images/homework/" + homeworkUnit.type + ".svg"
+        homeworkListItem.querySelector(".homework-type-icon").src = "./images/homework/" + homeworkUnit.type + ".svg"
 
         let homeworkType = homeworkListItem.querySelector(".homework-type")
         homeworkType.lastChild.textContent = homeworkTypeDisplayName(homeworkUnit.type)
