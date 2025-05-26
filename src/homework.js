@@ -79,6 +79,6 @@ function loadHomework(homeworkData) {
         homeworkType.lastChild.textContent = homeworkTypeDisplayName(homeworkUnit.type)
         homeworkType.style.color = homeworkTypeColor(homeworkUnit.type)
 
-        document.body.appendChild(homeworkListItem)
+        document.getElementById("homework-container").appendChild(homeworkListItem)
     }
 }

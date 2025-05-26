@@ -11,6 +11,15 @@
 </head>
 <body style="background-color: #1e1f23">
 
+<label for="class-select">Turma: </label>
+<select id="class-select">
+    <option value="PG211">1º C</option>
+    <option value="PG213">1º A</option>
+</select>
+
+<div id="homework-container">
+
+</div>
 <template id="homework-template">
 <div class="homework-box" style="padding: 16px; margin: 16px">
     <h2 class="homework-title" style="display: inline-flex">
@@ -18,7 +27,7 @@
         Tarefa de Matemática
     </h2>
 
-    <div style="padding: 0px">
+    <div style="padding: 0">
     <p class="homework-type" style="display: inline-flex; color: white">
         <img class="homework-type-icon" src="images/homework/textbook.svg" alt="ícone do tipo de tarefa" style="fill: red">
         Apostila

@@ -1,4 +1,4 @@
-p, h2, span {
+p, h2, span, label, select, option {
     font-family: Futura, sans-serif;
     color: white;
 
@@ -6,6 +6,14 @@ p, h2, span {
 
     margin: 0;
     padding: 8px;
+}
+
+select, option {
+    color: black;
+}
+
+label {
+    margin-left: 8px;
 }
 
 .homework-box {
