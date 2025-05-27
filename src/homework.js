@@ -4,6 +4,8 @@ const HomeworkTypes = {
     project : "project"
 }
 
+let homeworkIds = {}
+
 function homeworkTypeDisplayName(homeworkType) {
     switch(homeworkType) {
         case HomeworkTypes.textbook:
@@ -46,7 +48,12 @@ function loadHomework(homeworkData) {
     })
 
     for(const homeworkUnit of homeworkData) {
+        homeworkIds[homeworkUnit.id] = homeworkUnit
+
         let homeworkListItem = template.content.cloneNode(true)
+
+        let homeworkBox = homeworkListItem.querySelector(".homework-box")
+        homeworkBox.onclick = showHomeworkDetail.bind(null, homeworkUnit.id)
 
         let homeworkDate = homeworkListItem.querySelector(".homework-date")
         homeworkDate.textContent = homeworkUnit.date
@@ -81,4 +88,30 @@ function loadHomework(homeworkData) {
 
         document.getElementById("homework-container").appendChild(homeworkListItem)
     }
+}
+
+function hideHomeworkDetail() {
+    document.getElementById("detail-container").style.display = "none"
+}
+
+function showHomeworkDetail(homeworkId) {
+    let homeworkUnit = homeworkIds[homeworkId]
+    let detailContainer = document.getElementById("homework-detail")
+
+    document.getElementById("detail-container").style.display = "flex"
+
+    detailContainer.querySelector(".homework-subject-icon").src = "./images/subjects/" + homeworkUnit.subject + ".svg"
+
+    let homeworkTitle = detailContainer.querySelector(".homework-title")
+    homeworkTitle.lastChild.textContent = "Tarefa de " + subjectDisplayName(homeworkUnit.subject)
+    homeworkTitle.style.color = subjectColor(homeworkUnit.subject)
+
+    detailContainer.querySelector(".homework-type-icon").src = "./images/homework/" + homeworkUnit.type + ".svg"
+
+    let homeworkType = detailContainer.querySelector(".homework-type")
+    homeworkType.lastChild.textContent = homeworkTypeDisplayName(homeworkUnit.type)
+    homeworkType.style.color = homeworkTypeColor(homeworkUnit.type)
+
+    let homeworkDescription = detailContainer.querySelector(".homework-detail-description")
+    homeworkDescription.textContent = homeworkUnit.complicatedDescription
 }

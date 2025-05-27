@@ -13,25 +13,54 @@
 
 <label for="class-select">Turma: </label>
 <select id="class-select">
-    <option value="PG211">1º C</option>
-    <option value="PG213">1º A</option>
+    <option value="PG211">1º A</option>
+    <option value="PG213">1º C</option>
 </select>
+
+<div id="detail-container" style="display: none">
+    <div id="homework-detail">
+        <div style="justify-content: space-between; display: flex;  align-items: center">
+            <h2 class="homework-title" style="display: inline-flex">
+                <img class="homework-subject-icon" src="images/subjects/maths.svg" alt="ícone da matéria" width="64" height="64">
+                Tarefa de Matemática
+            </h2>
+
+            <span onclick="hideHomeworkDetail()" style="display: inline; margin-right: 8px; cursor: pointer; font-size: 24px;">
+                &times
+            </span>
+        </div>
+
+        <div style="padding: 0 0 0 8px;">
+            <p class="homework-type" style="display: inline-flex; color: white">
+                <img class="homework-type-icon" src="images/homework/textbook.svg" alt="ícone do tipo de tarefa" style="fill: red">
+                Apostila
+            </p>
+        </div>
+
+        <div id="homework-detail-description-container">
+            <p class="homework-detail-description" style="font-size: 15px; overflow-y: scroll;">
+
+            </p>
+        </div>
+
+    </div>
+</div>
 
 <div id="homework-container">
 
 </div>
 <template id="homework-template">
-<div class="homework-box" style="padding: 16px; margin: 16px">
+<div class="homework-box" style="padding: 16px; margin: 16px" onclick="console.log('diego')">
     <h2 class="homework-title" style="display: inline-flex">
         <img class="homework-subject-icon" src="images/subjects/maths.svg" alt="ícone da matéria" width="64" height="64">
         Tarefa de Matemática
     </h2>
 
-    <div style="padding: 0">
-    <p class="homework-type" style="display: inline-flex; color: white">
-        <img class="homework-type-icon" src="images/homework/textbook.svg" alt="ícone do tipo de tarefa" style="fill: red">
-        Apostila
-    </p>
+    <div style="padding: 0 0 0 8px;">
+        <p class="homework-type" style="display: inline-flex; color: white">
+            <img class="homework-type-icon" src="images/homework/textbook.svg" alt="ícone do tipo de tarefa" style="fill: red">
+            Apostila
+        </p>
     </div>
 
     <div style="justify-content: space-between; display: flex; padding: 8px; align-items: flex-start">

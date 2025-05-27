@@ -2,6 +2,7 @@ window.onload = init;
 
 function init() {
     document.getElementById("homework-container").innerHTML = ""
+    homeworkIds = {}
 
     const classSelect = document.getElementById("class-select")
 
